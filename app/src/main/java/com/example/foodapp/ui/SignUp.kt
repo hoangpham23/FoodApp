@@ -1,24 +1,17 @@
 package com.example.foodapp.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.os.SystemClock
 import android.util.Patterns
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.foodapp.R
-import com.example.foodapp.custom.CustomToast
 import com.example.foodapp.databinding.ActivitySignUpBinding
 import com.google.android.material.textfield.TextInputLayout
 
@@ -71,7 +64,6 @@ class SignUp : AppCompatActivity() {
 
         btnSignUp.setOnClickListener {
 
-            var flag = true
             val name = binding.inputName.text.toString()
             val layoutName = binding.inputLayoutName
 
@@ -110,35 +102,31 @@ class SignUp : AppCompatActivity() {
                 // Check if enough time has passed since the last toast
                 if (currentTime - lastToastTime >= toastDelayMillis) {
                     // Show the toast message
-                    Toast.makeText(this, "Please fill all required fields!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please fill all required fields!", Toast.LENGTH_SHORT)
+                        .show()
 //                    CustomToast(this, "Please fill all required fields!", Toast.LENGTH_SHORT)
 //                    toast.show()
                     // Update the last toast time to the current time
                     lastToastTime = currentTime
                 }
 
-                flag = false
                 return@setOnClickListener
             }
 
             if (!isValidEmail(email)) {
 
                 Toast.makeText(this, "Please enter correct format!", Toast.LENGTH_SHORT).show()
-                flag = false
                 return@setOnClickListener
             }
 
             if (password != confirmPassword) {
                 Toast.makeText(this, "Please enter correct confirm password!", Toast.LENGTH_SHORT)
                     .show()
-                flag = false
                 return@setOnClickListener
             }
 
-            if (flag) {
-                Intent(this, MainActivity::class.java).also {
-                    startActivity(it)
-                }
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
             }
         }
 

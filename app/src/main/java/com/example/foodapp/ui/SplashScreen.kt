@@ -3,6 +3,7 @@ package com.example.foodapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.foodapp.R
 
 
-@Suppress("DEPRECATION")
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class SplashScreen : AppCompatActivity() {
             insets
         }
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, Introduction1::class.java)
             startActivity(intent)
             finish()

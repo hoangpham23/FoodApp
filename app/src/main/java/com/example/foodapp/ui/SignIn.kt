@@ -1,7 +1,6 @@
 package com.example.foodapp.ui
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Patterns
@@ -12,11 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
-import androidx.transition.Visibility
 import com.example.foodapp.R
 import com.example.foodapp.databinding.ActivitySignInBinding
 import com.google.android.material.textfield.TextInputLayout
-import java.util.regex.Pattern
 
 class SignIn : AppCompatActivity() {
 
