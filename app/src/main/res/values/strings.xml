@@ -14,4 +14,6 @@
     <string name="name">Name</string>
     <string name="confirm_password">Confirm password</string>
     <string name="required">Required*</string>
+    <string name="skip">Skip</string>
+    <string name="intro_description">In publishing and graphic design, Lorem Ipsum is a placeholder text commonly used to demonstrate the visual form of a document or</string>
 </resources>
