@@ -47,6 +47,22 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
+        android:id="@+id/btnSkip"
+        style="@style/TextSize.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/skip"
+        android:textColor="@color/red_orange"
+        android:clickable="true"
+        android:focusable="true"
+        app:drawableEndCompat="@drawable/ic_arrow_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="368dp"
         android:layout_height="68dp"
@@ -61,7 +77,7 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.07999998" />
 
     <LinearLayout
         android:id="@+id/indicatorLayout"
