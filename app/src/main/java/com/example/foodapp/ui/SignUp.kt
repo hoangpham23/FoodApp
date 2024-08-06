@@ -2,9 +2,9 @@ package com.example.foodapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.util.Patterns
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,9 +19,6 @@ import com.google.android.material.textfield.TextInputLayout
 class SignUp : AppCompatActivity() {
 
     private lateinit var btnSignUp: Button
-    private var lastToastTime: Long = 0
-    private val toastDelayMillis: Long = 3000
-//    private lateinit var toast : CustomToast
 
     // create
     private val binding: ActivitySignUpBinding by lazy {
@@ -33,7 +30,7 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activity_sign_up)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -82,46 +79,28 @@ class SignUp : AppCompatActivity() {
             val isPasswordValid = validateField(layoutPassword, password)
             val isConfirmPasswordValid = validateField(layoutConfirmPassword, confirmPassword)
 
-//            val inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//            val layout = inflater.inflate(R.layout.custom_toast, null) as LinearLayoutCompat
-//            val toast  = Toast(this)
-//            toast.duration = Toast.LENGTH_SHORT
-//            toast.view = layout
-//            toast.setText("Please fill all required fields!")
 
-            // Proceed only if all fields are valid
             if (!isNameValid || !isEmailValid || !isPasswordValid || !isConfirmPasswordValid) {
-                // Proceed with sign up logic
+
+
                 if (!isNameValid) binding.inputName.requestFocus()
                 else if (!isEmailValid) binding.inputEmail.requestFocus()
                 else if (!isPasswordValid) binding.inputPassword.requestFocus()
                 else if (!isConfirmPasswordValid) binding.inputConfirmPassword.requestFocus()
-
-                val currentTime = SystemClock.elapsedRealtime()
-
-                // Check if enough time has passed since the last toast
-                if (currentTime - lastToastTime >= toastDelayMillis) {
-                    // Show the toast message
-                    Toast.makeText(this, "Please fill all required fields!", Toast.LENGTH_SHORT)
-                        .show()
-//                    CustomToast(this, "Please fill all required fields!", Toast.LENGTH_SHORT)
-//                    toast.show()
-                    // Update the last toast time to the current time
-                    lastToastTime = currentTime
-                }
 
                 return@setOnClickListener
             }
 
             if (!isValidEmail(email)) {
 
-                Toast.makeText(this, "Please enter correct format!", Toast.LENGTH_SHORT).show()
+                showToast("Please enter correct email!")
+                binding.inputEmail.requestFocus()
                 return@setOnClickListener
             }
 
             if (password != confirmPassword) {
-                Toast.makeText(this, "Please enter correct confirm password!", Toast.LENGTH_SHORT)
-                    .show()
+                showToast("Please enter correct confirm password!")
+                binding.inputConfirmPassword.requestFocus()
                 return@setOnClickListener
             }
 
@@ -131,6 +110,7 @@ class SignUp : AppCompatActivity() {
         }
 
     }
+
 
     private fun validateField(layout: TextInputLayout, text: String): Boolean {
         if (text.isEmpty()) {
@@ -148,4 +128,24 @@ class SignUp : AppCompatActivity() {
     private fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
+    private fun showToast(message: String) {
+        try {
+            val inflater = layoutInflater
+            // Inflate the custom layout/view
+            val toastView = inflater.inflate(R.layout.custom_toast, null)
+            toastView.findViewById<TextView>(R.id.toast_text).text = message
+
+            with(Toast(applicationContext)) {
+                duration = Toast.LENGTH_SHORT
+                setText(message)
+                view = toastView
+                show()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "Error showing custom toast", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

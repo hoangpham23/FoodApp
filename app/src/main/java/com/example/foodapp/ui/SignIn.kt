@@ -2,11 +2,10 @@ package com.example.foodapp.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.util.Patterns
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,9 +20,6 @@ class SignIn : AppCompatActivity() {
         ActivitySignInBinding.inflate(layoutInflater)
     }
 
-    private lateinit var btnSignIn: Button
-    private var lastToastTime: Long = 0
-    private val toastDelayMillis: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,14 +60,15 @@ class SignIn : AppCompatActivity() {
                 else if (!isPasswordValid) binding.inputPassword.requestFocus()
             }
 
-            val currentTime = SystemClock.elapsedRealtime()
+            if (email == "hoangpham" || password == "1234")
 
-            if (currentTime - lastToastTime >= toastDelayMillis){
-                Toast.makeText(this, "Please fill all required fields!", Toast.LENGTH_SHORT).show()
+            AlertDialog.Builder(this)
+                .setTitle("Sign In Error")
+                .setMessage("Invalid email or password. Please try again.")
+                .setPositiveButton("OK", null)
+                .show()
 
-                // Update the last toast time to the current time
-                lastToastTime = currentTime
-            }
+            return@setOnClickListener
 
         }
     }

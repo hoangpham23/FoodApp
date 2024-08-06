@@ -15,7 +15,7 @@
         <activity
             android:name=".ui.SignUp"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
@@ -31,7 +31,6 @@
         <activity
             android:name=".ui.SignIn"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             />
         <activity
             android:name=".ui.Introduction3"
