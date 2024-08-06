@@ -42,6 +42,9 @@ class SignUp : AppCompatActivity() {
         }
 
         binding.inputEmail.doOnTextChanged { text, _, _, _ ->
+            binding.inputLayoutEmail.helperText = ""
+            binding.inputLayoutEmail.isHelperTextEnabled = false
+
             if (!isValidEmail(text.toString())) {
                 binding.inputLayoutEmail.error = "Invalid email"
             } else {
@@ -50,6 +53,10 @@ class SignUp : AppCompatActivity() {
         }
 
         binding.inputConfirmPassword.doOnTextChanged { text, _, _, _ ->
+
+            binding.inputLayoutEmail.helperText = ""
+            binding.inputLayoutEmail.isHelperTextEnabled = false
+
             if (text.toString() != binding.inputPassword.text.toString()) {
                 binding.inputLayoutConfirmPassword.error = "Not match"
             } else {

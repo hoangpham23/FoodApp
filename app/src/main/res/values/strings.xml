@@ -16,4 +16,7 @@
     <string name="required">Required*</string>
     <string name="skip">Skip</string>
     <string name="intro_description">In publishing and graphic design, Lorem Ipsum is a placeholder text commonly used to demonstrate the visual form of a document or</string>
+    <string name="forgotPassword">Forgot password</string>
+    <string name="description_password">Please enter your email address. You will receive a link to create a new password via email.</string>
+    <string name="send">SEND</string>
 </resources>
