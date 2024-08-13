@@ -63,20 +63,20 @@ class SignIn : AppCompatActivity() {
             val isEmailValid = validateField(layoutEmail, email)
             val isPasswordValid = validateField(layoutPassword, password)
 
-            if (!isEmailValid || !isPasswordValid) {
-                if (!isEmailValid) binding.inputEmail.requestFocus()
-                else if (!isPasswordValid) binding.inputPassword.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (!(email == "pcm230304@gmail.com" && password == "1234")) {
-                AlertDialog.Builder(this)
-                    .setTitle("Sign In Error")
-                    .setMessage("Invalid email or password. Please try again.")
-                    .setPositiveButton("OK", null)
-                    .show()
-                return@setOnClickListener
-            }
+//            if (!isEmailValid || !isPasswordValid) {
+//                if (!isEmailValid) binding.inputEmail.requestFocus()
+//                else if (!isPasswordValid) binding.inputPassword.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            if (!(email == "pcm230304@gmail.com" && password == "1234")) {
+//                AlertDialog.Builder(this)
+//                    .setTitle("Sign In Error")
+//                    .setMessage("Invalid email or password. Please try again.")
+//                    .setPositiveButton("OK", null)
+//                    .show()
+//                return@setOnClickListener
+//            }
 
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
