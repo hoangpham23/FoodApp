@@ -106,7 +106,6 @@
         android:textColor="@color/red_orange"
         android:clickable="true"
         android:focusable="true"
-        app:drawableEndCompat="@drawable/ic_arrow_right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
