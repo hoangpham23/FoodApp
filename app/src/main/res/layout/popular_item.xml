@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/imageFood"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="image of food"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:srcCompat="@drawable/popular_food1" />
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                style="@style/TextSize.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Food Name"
+
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageFood"
+                app:layout_constraintStart_toEndOf="@+id/imageFood"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+
+                />
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$5"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.748"
+                app:layout_constraintStart_toEndOf="@+id/imageFood"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/red_orange"
+                android:text="@string/add"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvMoney"
+                app:layout_constraintStart_toStartOf="@+id/tvMoney"
+                app:layout_constraintTop_toBottomOf="@+id/tvMoney" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
